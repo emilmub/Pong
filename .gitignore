@@ -1,0 +1,11 @@
+# Ignore the following directories
+Library/
+Logs/
+obj/
+Temp/
+.vs/
+
+# Ignore the following files
+.vsconfig
+Assembly-CSharp.csproj
+Pong.sln
