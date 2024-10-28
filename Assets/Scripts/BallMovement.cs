@@ -11,6 +11,9 @@ public class BallMovement : MonoBehaviour
 
     public TextMeshProUGUI p1ScoreText;
     public TextMeshProUGUI p2ScoreText;
+    public AudioSource collisionSound;
+    public AudioSource scoreAudio;
+
     private int p1Score = 0;
     private int p2Score = 0;
 
@@ -31,14 +34,13 @@ public class BallMovement : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             direction.y *= -1;
-            Debug.Log("Wall touched, y direction" +  direction.y);
         }
 
         if (collision.gameObject.tag == "Paddle")
         {
             direction.x *= -1;
-            Debug.Log("Paddle touched, x direction" + direction.x);
         }
+        collisionSound.Play();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -62,5 +64,7 @@ public class BallMovement : MonoBehaviour
             // Reset ball
             transform.position = Vector3.zero;
         }
+
+        scoreAudio.Play();
     }
 }
